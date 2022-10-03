@@ -86,29 +86,8 @@ contract BuyMeCoffee {
      * @return All memos
      */
 
-    function getAllMemos()
-        public
-        view
-        returns (
-            address[] memory,
-            uint256[] memory,
-            string[] memory,
-            string[] memory
-        )
-    {
-        address[] memory froms = new address[](memos.length);
-        uint256[] memory timestamps = new uint256[](memos.length);
-        string[] memory names = new string[](memos.length);
-        string[] memory messages = new string[](memos.length);
-
-        for (uint256 i = 0; i < memos.length; i++) {
-            froms[i] = memos[i].from;
-            timestamps[i] = memos[i].timestamp;
-            names[i] = memos[i].name;
-            messages[i] = memos[i].message;
-        }
-
-        return (froms, timestamps, names, messages);
+    function getMemos() public view returns (Memo[] memory) {
+        return memos;
     }
 
     /**
