@@ -1,6 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.9;
 
+//Deployed at Mumbai Testnet at 0xd4b17Cae0d99aC70Fd856C35f937e32F8d840836
+//Deployed at Mumbai Testnet at 0xEF25bC6CbF852ee7a39af9855465acDE9330F44E
+
 contract BuyMeCoffee {
     receive() external payable {}
 
@@ -22,7 +25,7 @@ contract BuyMeCoffee {
 
     Memo[] public memos;
 
-    address payable owner;
+    address payable public owner;
 
     constructor() {
         owner = payable(msg.sender);
@@ -96,5 +99,10 @@ contract BuyMeCoffee {
 
     function withdraw() public onlyOwner {
         owner.transfer(address(this).balance);
+    }
+
+    //Get owner
+    function getOwner() public view returns (address) {
+        return owner;
     }
 }
